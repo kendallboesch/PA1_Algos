@@ -19,7 +19,7 @@ void shellSort(vector<C1>& varray, int code)
     }
     else if (code == 1)
     {
-        cout << "CODE: 01" << endl;
+      //  cout << "CODE: 01" << endl;
         base = 2;
         k  = 0;
 
@@ -31,12 +31,12 @@ void shellSort(vector<C1>& varray, int code)
             k++;
 
             result = pow(base, k);
-            cout << "K: " << k << endl << "result: " << result << endl;
+         //   cout << "K: " << k << endl << "result: " << result << endl;
             if(result >= n)
             {
                 k = prevK;
-                cout << "Final K Val: " << k << endl;
-                cout << "Final Result Val : " << pow(base, k) << endl;
+//                cout << "Final K Val: " << k << endl;
+//                cout << "Final Result Val : " << pow(base, k) << endl;
                 calculatingKVal = false;
             }
 
@@ -48,16 +48,16 @@ void shellSort(vector<C1>& varray, int code)
         double kInc = 0;
         while(term > 1)
         {
-            cout << "TERM = 2 ^ (" << k << '-' << kInc << ')' << endl;
+            //cout << "TERM = 2 ^ (" << k << '-' << kInc << ')' << endl;
             term = pow(base, k - kInc);
-            cout << term << endl;
+            //cout << term << endl;
             hlist.push_back(term);
             kInc++;
         }
     }
     else if(code == 2)
     {
-        cout << "CODE: 02" << endl;
+       // cout << "CODE: 02" << endl;
         base = 2;
         k = prevK = 0;
 
@@ -69,12 +69,12 @@ void shellSort(vector<C1>& varray, int code)
             k++;
 
             result = pow(base, k) - 1;
-            cout << "K: " << k << endl << "result: " << result << endl;
+            //cout << "K: " << k << endl << "result: " << result << endl;
             if(result >= n)
             {
                 k = prevK;
-                cout << "Final K Val: " << k << endl;
-                cout << "Final Result Val : " << pow(base, k) - 1 << endl;
+//                cout << "Final K Val: " << k << endl;
+//                cout << "Final Result Val : " << pow(base, k) - 1 << endl;
                 calculatingKVal = false;
             }
         }
@@ -86,31 +86,31 @@ void shellSort(vector<C1>& varray, int code)
         double kInc = 0;
         while(term > 1)
         {
-            cout << "TERM = 2 ^ (" << k << '-' << kInc << ')' << "-1" << endl;
+           // cout << "TERM = 2 ^ (" << k << '-' << kInc << ')' << "-1" << endl;
             term = pow(base, k - kInc) - 1;
-            cout << term << endl;
+            //cout << term << endl;
             hlist.push_back(term);
             kInc++;
         }
     }
     else if (code == 3)
     {
-        k = 0;
-        cout << "CODE: 03" << endl;
+        k = 2;
+        //cout << "CODE: 03" << endl;
         result = 0;
         bool calculatingKVal = true;
         while(calculatingKVal)
         {
             prevK = k;
             k++;
-            cout << "K: " << k << endl << "Result: " << result << endl;
+            //cout << "K: " << k << endl << "Result: " << result << endl;
             result = comb(k);
             if(result >= n)
             {
                 k = prevK;
-                cout << "Final K: " << k << endl;
+                //cout << "Final K: " << k << endl;
                 result = comb(k);
-                cout << "Final result val: " << result << endl;
+                //cout << "Final result val: " << result << endl;
                 calculatingKVal = false;
             }
         }
@@ -128,13 +128,15 @@ void shellSort(vector<C1>& varray, int code)
 
     }
 //
-    cout << "HLIST: " << endl;
-    for(int i = 0; i < hlist.size(); i++)
-    {
-        cout << hlist[i] << endl;
-    }
+    //cout << "HLIST: " << endl;
+//    for(int i = 0; i < hlist.size(); i++)
+//    {
+//        cout << hlist[i] << endl;
+//    }
     int h;
 
+    int count = 0;
+    C1::compareCount = 0;
     for(int l = 0; l < hlist.size(); l++)
     {
         h = hlist[l];
@@ -144,16 +146,25 @@ void shellSort(vector<C1>& varray, int code)
             int i = j - h;
             while(i >= 0 && key < varray[i])
             {
+
+                C1::compareCount++;
+                count++;
+              //  cout << "C: " << count << endl;
+
                 varray[i + h] == varray[i];
                 i = i - h;
             }
             varray[i+h] == key;
         }
     }
+
+    /cout << "COUNT: " << count << endl;
+    C1::compareCount = count;
+
 }
 int fact(int n)
 {
-    if(n <= 1)
+    if(n == 1 || n == 0)
     {
         return 1;
     }
