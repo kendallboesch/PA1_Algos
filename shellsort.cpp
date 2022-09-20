@@ -158,7 +158,7 @@ void shellSort(vector<C1>& varray, int code)
         }
     }
 
-    /cout << "COUNT: " << count << endl;
+    cout << "COUNT: " << count << endl;
     C1::compareCount = count;
 
 }
