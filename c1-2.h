@@ -38,6 +38,7 @@ class C1 {
    bool operator<(const C1& t)
    {
       compareCount++;
+      //std::cout << compareCount << std::endl;
       if (arr[0] < t.arr[0])
          return true;
       else if (arr[0] == t.arr[0])

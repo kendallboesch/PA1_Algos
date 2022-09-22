@@ -8,6 +8,7 @@ double  comb(double );
 void shellSort(vector<C1>&, int);
 
 void shellSort(vector<C1>& varray, int code) {
+    C1::compareCount = 0;
     vector<int> hlist;
     //  int n = varray.size();
     unsigned int base, k, prevK, result;
@@ -89,12 +90,12 @@ void shellSort(vector<C1>& varray, int code) {
             prevK = k;
             k++;
             result = comb(k);
-            cout << "K: " << k << endl << "Result: " << result << endl;
+           // cout << "K: " << k << endl << "Result: " << result << endl;
             if (result >= n) {
                 k = prevK;
-                cout << "Final K: " << k << endl;
+                //cout << "Final K: " << k << endl;
                 result = comb(k);
-                cout << "Final result val: " << result << endl;
+                //cout << "Final result val: " << result << endl;
                 calculatingKVal = false;
             }
         }
@@ -111,28 +112,25 @@ void shellSort(vector<C1>& varray, int code) {
         }
 
     }
-//
-    //cout << "HLIST: " << endl;
-//    for(int i = 0; i < hlist.size(); i++)
-//    {
-//        cout << hlist[i] << endl;
-//    }
+
     int h;
 
-    int count = 0;
-    C1::compareCount = 0;
+    int count, count2 = 0;
+    //C1::compareCount = 0;
+    C1 key;
+    //key.compareCount=0;
+
     for (int l = 0; l < hlist.size(); l++) {
         h = hlist[l];
         for (int j = 1; j < n; j++) {
-            C1 key(varray[j]);
+            key==(varray[j]);
             int i = j - h;
+            //count2 = C1::compareCount;
             while (i >= 0 && key < varray[i]) {
 
                // C1::compareCount++;
-                count++;
-                //  cout << "C: " << count << endl;
-
-                varray[i + h] == varray[i];
+               // count = C1::compareCount;
+               varray[i + h] == varray[i];
                 i = i - h;
             }
             varray[i + h] == key;
@@ -140,7 +138,7 @@ void shellSort(vector<C1>& varray, int code) {
     }
 
     // cout << "COUNT: " << count << endl;
-    C1::compareCount = count;
+    //C1::compareCount = count;
 
 }
 double  fact(double n)
