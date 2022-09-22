@@ -1,6 +1,7 @@
 #include <vector>
 #include <cmath>
 #include "shellsort.cpp"
+#include <fstream>
 
 using namespace std;
 
@@ -22,6 +23,8 @@ int main() {
     num.push_back(5000);
     total_trials = 24;
 
+    ofstream outFs;
+    outFs.open("results.csv");
 
     for ( sort = 0; sort < 4; sort++) {       // Sort loop
 
@@ -30,7 +33,7 @@ int main() {
                 {  // trial num loop
                     vector<C1> k;
 
-                    for (n = 0;n <= 0; n++) {     // num
+                    for (n = 0;n <= num[y]; n++) {     // num
                         int a, b, c;
                         a = rand() % 100;
                         b = rand() % 100;
@@ -42,12 +45,14 @@ int main() {
 
                     C1::compareCount = 0;
                     shellSort(k, sort);
+                    outFs << sort << ',' << trial << ',' << num[y] << ',' << C1::compareCount << endl;
                     cout << sort << ',' << trial << ',' << num[y] << ',' << C1::compareCount << endl;
+
                 }
 
             }
 
-        cout << "------------------------------------------" << endl;
+        //cout << "------------------------------------------" << endl;
 
     }
 
